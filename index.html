@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOYAH — Understand your relationship</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background: #faf8ff;
+        color: #1a1a2e;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 28px 0;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    
+    nav a {
+        color: #6b5b95;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 32px;
+        font-size: 16px;
+        transition: color 0.2s;
+    }
+    
+    nav a:hover {
+        color: #1a1a2e;
+    }
+    
+    /* Hero */
+    .hero {
+        text-align: center;
+        padding: 60px 0 80px;
+    }
+    
+    h1 {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 56px;
+        line-height: 1.1;
+        color: #1a1a2e;
+        max-width: 780px;
+        margin: 0 auto 24px;
+        font-weight: 400;
+        letter-spacing: -0.5px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+        color: #5b5b7a;
+        max-width: 560px;
+        margin: 0 auto 36px;
+    }
+    
+    .btn-primary {
+        display: inline-block;
+        background: #b18aff;
+        color: white;
+        padding: 16px 32px;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(177,138,255,0.3);
+        transition: all 0.2s;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(177,138,255,0.4);
+    }
+    
+    .hero-note {
+        margin-top: 14px;
+        font-size: 14px;
+        color: #7a6b9e;
+    }
+    
+    /* Steps */
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin: 20px 0 100px;
+    }
+    
+    .step-card {
+        background: #f7f3ff;
+        border: 1px solid #e8dffc;
+        border-radius: 20px;
+        padding: 32px;
+    }
+    
+    .step-num {
+        width: 32px;
+        height: 32px;
+        background: white;
+        border: 1px solid #e8dffc;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #6b5b95;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .step-title {
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #1a1a2e;
+    }
+    
+    .step-text {
+        color: #5b5b7a;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    
+    /* Demo */
+    .demo-section {
+        text-align: center;
+        margin: 120px 0;
+    }
+    
+    .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        color: #8a7ab0;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+    
+    h2 {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 40px;
+        color: #1a1a2e;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    
+    .demo-card {
+        background: white;
+        border: 1px solid #ede6ff;
+        border-radius: 24px;
+        padding: 32px;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: left;
+        box-shadow: 0 4px 20px rgba(26,26,46,0.04);
+    }
+    
+    .quote-box {
+        background: #faf8ff;
+        border: 1px solid #ede6ff;
+        border-radius: 16px;
+        padding: 20px;
+        font-style: italic;
+        color: #1a1a2e;
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .badge {
+        display: inline-block;
+        background: #fde2f0;
+        color: #a14d7a;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    
+    .demo-label {
+        font-weight: 700;
+        font-size: 15px;
+        color: #1a1a2e;
+        margin: 28px 0 8px;
+    }
+    
+    .demo-label:first-of-type {
+        margin-top: 20px;
+    }
+    
+    .demo-text {
+        color: #5b5b7a;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    /* Pricing */
+    .pricing-section {
+        margin: 120px 0 80px;
+    }
+    
+    .pricing-title {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 36px;
+        text-align: center;
+        color: #1a1a2e;
+        font-weight: 400;
+        margin-bottom: 48px;
+    }
+    
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        max-width: 860px;
+        margin: 0 auto;
+    }
+    
+    .price-card {
+        border-radius: 24px;
+        padding: 32px;
+        position: relative;
+    }
+    
+    .price-card.free {
+        background: white;
+        border: 1px solid #e5e0f0;
+    }
+    
+    .price-card.plus {
+        background: #faf7ff;
+        border: 2px solid #b18aff;
+    }
+    
+    .popular {
+        position: absolute;
+        top: -12px;
+        right: 24px;
+        background: #b18aff;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .plan-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a1a2e;
+        margin-bottom: 8px;
+    }
+    
+    .price {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 48px;
+        color: #1a1a2e;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+    
+    .price span {
+        font-size: 18px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #5b5b7a;
+        font-weight: 400;
+        margin-left: 4px;
+    }
+    
+    .plan-desc {
+        color: #5b5b7a;
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+    
+    .features {
+        list-style: none;
+    }
+    
+    .features li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 14px;
+        color: #1a1a2e;
+        font-size: 15px;
+    }
+    
+    .check {
+        width: 20px;
+        height: 20px;
+        background: #ede6ff;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #b18aff;
+        font-size: 12px;
+        font-weight: 700;
+        margin-right: 12px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    
+    .btn-secondary {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 24px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        margin-top: 28px;
+        transition: all 0.2s;
+        background: white;
+        border: 1px solid #d0c5e8;
+        color: #1a1a2e;
+    }
+    
+    .btn-secondary:hover {
+        border-color: #b18aff;
+        background: #faf8ff;
+    }
+    
+    .btn-plus {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 24px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        margin-top: 28px;
+        transition: all 0.2s;
+        background: #b18aff;
+        color: white;
+        box-shadow: 0 4px 14px rgba(177,138,255,0.3);
+    }
+    
+    .btn-plus:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(177,138,255,0.4);
+    }
+    
+    /* Footer */
+    footer {
+        text-align: center;
+        color: #9a8bb5;
+        font-size: 14px;
+        padding: 60px 0 40px;
+        border-top: 1px solid #ede6ff;
+        margin-top: 40px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+        .steps {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 40px;
+        }
+        
+        h2 {
+            font-size: 32px;
+        }
+        
+        .pricing-title {
+            font-size: 30px;
+        }
+        
+        .hero {
+            padding: 40px 0 60px;
+        }
+        
+        .pricing-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .demo-card {
+            padding: 24px;
+        }
+        
+        .step-card {
+            padding: 24px;
+        }
+        
+        nav a {
+            margin-left: 20px;
+            font-size: 15px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 34px;
+        }
+        
+        .wrap {
+            padding: 0 20px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#b18aff"/>
+                </svg>
+            </div>
+            <nav>
+                <a href="#demo">Demo</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Understand what's really happening in your relationship.</h1>
+            <p class="subtitle">LOYAH AI reads between the lines. Facts, not feelings.</p>
+            <a href="app.html" class="btn-primary">Try LOYAH Free</a>
+            <div class="hero-note">No signup required · 60 seconds</div>
+        </section>
+
+        <section class="steps">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <div class="step-title">Paste the chat</div>
+                <div class="step-text">Drop a screenshot or text from iMessage, WhatsApp, or any chat.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <div class="step-title">AI analyzes patterns</div>
+                <div class="step-text">LOYAH detects tone, distance, and hidden meaning in seconds.</div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <div class="step-title">Get clarity</div>
+                <div class="step-text">See what's really being said and what to do next.</div>
+            </div>
+        </section>
+
+        <section id="demo" class="demo-section">
+            <div class="eyebrow">Live Demo</div>
+            <h2>Facts over overthinking</h2>
+            
+            <div class="demo-card">
+                <div class="quote-box">"I'm fine. Do whatever you want."</div>
+                
+                <span class="badge">Pattern: Passive Withdrawal</span>
+                
+                <div class="demo-label">What it really means</div>
+                <p class="demo-text">Not fine. This is a test for reassurance, not permission. She wants you to care enough to push past the surface.</p>
+                
+                <div class="demo-label">LOYAH suggests</div>
+                <p class="demo-text">"I hear you're upset. I'm here — want to talk about what's on your mind?" Validates without defensiveness.</p>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section">
+            <h2 class="pricing-title">Start free, upgrade for depth</h2>
+            
+            <div class="pricing-grid">
+                <div class="price-card free">
+                    <div class="plan-name">Free</div>
+                    <div class="price">$0</div>
+                    <div class="plan-desc">Perfect for trying LOYAH</div>
+                    
+                    <ul class="features">
+                        <li><span class="check">✓</span> 3 analyses per day</li>
+                        <li><span class="check">✓</span> Basic tone detection</li>
+                        <li><span class="check">✓</span> Pattern recognition</li>
+                        <li><span class="check">✓</span> Suggested replies</li>
+                    </ul>
+                    
+                    <a href="app.html" class="btn-secondary">Start Free</a>
+                </div>
+                
+                <div class="price-card plus">
+                    <div class="popular">Most Popular</div>
+                    <div class="plan-name">Plus</div>
+                    <div class="price">$9<span>/month</span></div>
+                    <div class="plan-desc">For serious clarity</div>
+                    
+                    <ul class="features">
+                        <li><span class="check">✓</span> Unlimited analyses</li>
+                        <li><span class="check">✓</span> Deep pattern history</li>
+                        <li><span class="check">✓</span> Relationship health score</li>
+                        <li><span class="check">✓</span> Custom reply coaching</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                    </ul>
+                    
+                    <a href="app.html" class="btn-plus">Upgrade to Plus</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2025 LOYAH · Facts, not feelings
+        </footer>
+    </div>
+</body>
+</html>
